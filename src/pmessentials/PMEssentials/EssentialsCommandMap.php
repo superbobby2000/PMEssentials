@@ -6,14 +6,11 @@ namespace pmessentials\PMEssentials;
 
 use AndreasHGK\AutoCompleteAPI\AutoCompleteAPI;
 use AndreasHGK\AutoCompleteAPI\CustomCommandData;
-use pmessentials\PMEssentials\command\BackCommand;
 use pmessentials\PMEssentials\command\BreakCommand;
 use pmessentials\PMEssentials\command\BroadcastCommand;
 use pmessentials\PMEssentials\command\BurnCommand;
-use pmessentials\PMEssentials\command\ClearinventoryCommand;
 use pmessentials\PMEssentials\command\ExtinguishCommand;
 use pmessentials\PMEssentials\command\FeedCommand;
-use pmessentials\PMEssentials\command\FlyCommand;
 use pmessentials\PMEssentials\command\GameModeCommand;
 use pmessentials\PMEssentials\command\GodCommand;
 use pmessentials\PMEssentials\command\HealCommand;
@@ -27,16 +24,11 @@ use pmessentials\PMEssentials\command\PosCommand;
 use pmessentials\PMEssentials\command\PowertoolCommand;
 use pmessentials\PMEssentials\command\RealNameCommand;
 use pmessentials\PMEssentials\command\SimpleCommand;
-use pmessentials\PMEssentials\command\SizeCommand;
 use pmessentials\PMEssentials\command\SpeedCommand;
 use pmessentials\PMEssentials\command\ThorCommand;
 use pmessentials\PMEssentials\command\ThruCommand;
-use pmessentials\PMEssentials\command\TpacceptCommand;
-use pmessentials\PMEssentials\command\TpaCommand;
-use pmessentials\PMEssentials\command\TpahereCommand;
 use pmessentials\PMEssentials\command\TreeCommand;
 use pmessentials\PMEssentials\command\UsageCommand;
-use pmessentials\PMEssentials\command\VanishCommand;
 use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
 
@@ -76,13 +68,10 @@ class EssentialsCommandMap {
             new FeedCommand(),
             new GameModeCommand(),
             new ICommand(),
-            new SizeCommand(),
             new RealNameCommand(), //todo: add autocompletion
             new UsageCommand(),
             new PowertoolCommand(),
             new PingCommand(),
-            new FlyCommand(),
-            new VanishCommand(),
             new SpeedCommand(),
             new PosCommand(),
             new GodCommand(),
@@ -91,13 +80,8 @@ class EssentialsCommandMap {
             new TreeCommand(),
             new BreakCommand(),
             new ThruCommand(),
-            new TpaCommand(),
-            new TpahereCommand(),
-            new TpacceptCommand(),
             new BurnCommand(),
             new ExtinguishCommand(),
-            new BackCommand(),
-            new ClearinventoryCommand(),
             new BroadcastCommand(),
             new MilkCommand(),
             new MuteCommand()
@@ -156,13 +140,6 @@ class EssentialsCommandMap {
                 $data->normalParameter(0, 1, CustomCommandData::ARG_TYPE_INT, "Count", true);
             }
 
-            $cmd = $cmap->getCommand("size");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof SizeCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_INT, "Size", true);
-                $data->normalParameter(0, 1, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
-            }
-
             $cmd = $cmap->getCommand("usage");
             if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof UsageCommand){
                 $data = $autoCompleteAPI->registerCommandData($cmd);
@@ -174,18 +151,6 @@ class EssentialsCommandMap {
                 $data = $autoCompleteAPI->registerCommandData($cmd);
                 $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_COMMAND, "Command");
                 $data->normalParameter(1, 0, CustomCommandData::ARG_TYPE_MESSAGE, "Message");
-            }
-
-            $cmd = $cmap->getCommand("fly");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof FlyCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
-            }
-
-            $cmd = $cmap->getCommand("vanish");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof VanishCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
             }
 
             $cmd = $cmap->getCommand("speed");
@@ -213,18 +178,6 @@ class EssentialsCommandMap {
                 $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
             }
 
-            $cmd = $cmap->getCommand("tpa");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof TpaCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player");
-            }
-
-            $cmd = $cmap->getCommand("tpahere");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof TpahereCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player");
-            }
-
             $cmd = $cmap->getCommand("burn");
             if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof BurnCommand){
                 $data = $autoCompleteAPI->registerCommandData($cmd);
@@ -233,12 +186,6 @@ class EssentialsCommandMap {
 
             $cmd = $cmap->getCommand("extinguish");
             if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof ExtinguishCommand){
-                $data = $autoCompleteAPI->registerCommandData($cmd);
-                $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
-            }
-
-            $cmd = $cmap->getCommand("clearinventory");
-            if($cmd instanceof SimpleCommand && $cmd->getExecutor() instanceof ClearinventoryCommand){
                 $data = $autoCompleteAPI->registerCommandData($cmd);
                 $data->normalParameter(0, 0, CustomCommandData::ARG_TYPE_TARGET, "Player", true);
             }
