@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace pmessentials\PMEssentials;
 
 use pmessentials\PMEssentials\event\PlayerGodmodeEvent;
-use pmessentials\PMEssentials\event\PlayerVanishEvent;
 use pmessentials\PMEssentials\Main;
 use pocketmine\level\Position;
 use pocketmine\Player;
