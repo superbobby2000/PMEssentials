@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace pmessentials\PMEssentials;
 
 use pmessentials\PMEssentials\API;
-use pmessentials\PMEssentials\listener\BackListener;
 use pmessentials\PMEssentials\listener\GodmodeListener;
 use pmessentials\PMEssentials\listener\ListenerBase;
 use pmessentials\PMEssentials\listener\MuteListener;
 use pmessentials\PMEssentials\listener\PowertoolListener;
 use pmessentials\PMEssentials\listener\UserEventListener;
-use pmessentials\PMEssentials\listener\VanishListener;
 use pmessentials\PMEssentials\module\ModuleManager;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -50,10 +48,8 @@ class Main extends PluginBase{
     }
 
     public function onEnable() : void{
-        $this->listeners[VanishListener::class] = new VanishListener();
         $this->listeners[PowertoolListener::class] = new PowertoolListener();
         $this->listeners[GodmodeListener::class] = new GodmodeListener();
-        $this->listeners[BackListener::class] = new BackListener();
         $this->listeners[MuteListener::class] = new MuteListener();
 	    $this->commandMap = EssentialsCommandMap::getInstance();
 
